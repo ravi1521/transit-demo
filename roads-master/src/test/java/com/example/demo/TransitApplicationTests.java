@@ -36,14 +36,14 @@ public class TransitApplicationTests {
 
     @Test
     public void sameCity() {
-        City city = City.build("A");
+        City city = City.build("Albany");
         Assert.assertTrue(Commuter.commute(city, city));
     }
 
     @Test
     public void neighbours() {
-        City cityA = county.getCity("A");
-        City cityB = county.getCity("B");
+        City cityA = county.getCity("Albany");
+        City cityB = county.getCity("Boston");
 
         Assert.assertNotNull("Invalid test data. City not found: A", cityA);
         Assert.assertNotNull("Invalid test data. City not found: B", cityB);
@@ -53,8 +53,8 @@ public class TransitApplicationTests {
 
     @Test
     public void distantConnected() {
-        City cityA = county.getCity("F");
-        City cityB = county.getCity("A");
+        City cityA = county.getCity("Frisco");
+        City cityB = county.getCity("Albany");
 
         Assert.assertNotNull("Invalid test data. City not found: F", cityA);
         Assert.assertNotNull("Invalid test data. City not found: A", cityB);
@@ -66,8 +66,8 @@ public class TransitApplicationTests {
     public void restConnectedIT() {
 
         Map<String, String> params = new HashMap<>();
-        params.put("origin", "A");
-        params.put("destination", "F");
+        params.put("origin", "Albany");
+        params.put("destination", "Frisco");
 
         String body = restTemplate.getForObject("/connected?origin={origin}&destination={destination}", String.class, params);
         Assert.assertEquals("true", body);
@@ -77,8 +77,8 @@ public class TransitApplicationTests {
     public void restNotConnectedIT() {
 
         Map<String, String> params = new HashMap<>();
-        params.put("origin", "a");
-        params.put("destination", "l");
+        params.put("origin", "Albany");
+        params.put("destination", "Laval");
 
         String body = restTemplate.getForObject("/connected?origin={origin}&destination={destination}", String.class, params);
         Assert.assertEquals("false", body);
