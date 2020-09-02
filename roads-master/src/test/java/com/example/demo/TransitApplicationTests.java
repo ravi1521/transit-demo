@@ -56,8 +56,8 @@ public class TransitApplicationTests {
         City cityA = county.getCity("Frisco");
         City cityB = county.getCity("Albany");
 
-        Assert.assertNotNull("Invalid test data. City not found: F", cityA);
-        Assert.assertNotNull("Invalid test data. City not found: A", cityB);
+        Assert.assertNotNull("Invalid test data. City not found: Frisco", cityA);
+        Assert.assertNotNull("Invalid test data. City not found: Albany", cityB);
 
         Assert.assertTrue(Commuter.commute(cityA, cityB));
     }
@@ -70,7 +70,7 @@ public class TransitApplicationTests {
         params.put("destination", "Frisco");
 
         String body = restTemplate.getForObject("/connected?origin={origin}&destination={destination}", String.class, params);
-        Assert.assertEquals("true", body);
+        Assert.assertEquals("yes", body);
     }
 
     @Test
@@ -81,7 +81,7 @@ public class TransitApplicationTests {
         params.put("destination", "Laval");
 
         String body = restTemplate.getForObject("/connected?origin={origin}&destination={destination}", String.class, params);
-        Assert.assertEquals("false", body);
+        Assert.assertEquals("no", body);
     }
 
     @Test
