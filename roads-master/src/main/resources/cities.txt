@@ -1,0 +1,8 @@
+Albany,Boston
+Albany,Detroit
+Boston,Cincinatti
+Detroit,Albany
+Edison,Frisco
+Albany,Albany
+Kansas,Laval
+Laval,Edison
